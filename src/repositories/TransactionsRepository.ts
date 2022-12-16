@@ -25,7 +25,7 @@ class TransactionsRepository {
 
   public getBalance(): Balance {
 
-    const {income, outcome,} = this.transactions.reduce((accumulator: Balance, transaction: Transaction) => {
+    const {income, outcome} = this.transactions.reduce((accumulator: Balance, transaction: Transaction) => {
       switch (transaction.type) {
         case 'income':
           accumulator.income += transaction.value;
@@ -48,29 +48,31 @@ class TransactionsRepository {
 
     return {income, outcome, total};
 
-    // const incomeTransacitons = this.transactions.filter(transaction => (transaction.type.includes('income')));
+    // const incomeTransacitons = this.transactions.filter(transaction => transaction.type.includes('income'));
     // const outcomeTransations = this.transactions.filter(transaction => transaction.type.includes('outcome'));
 
-    // const incomeList = incomeTransacitons.map((income) => income.value);
-    // const outcomeList = outcomeTransations.map((income) => income.value);
+    // const incomeList = incomeTransacitons.map(income => income.value);
+    // const outcomeList = outcomeTransations.map(outcome => outcome.value);
 
     // const initialincome = 0;
     // const sumIncome = incomeList.reduce(
     //   (accumulator, currentValue) => accumulator + currentValue,
-    //   initialincome
+    //   initialincome 
     // );
 
-    // const initialOutcome = 0;
-    // const sumOutcome = outcomeList.reduce(
-    //   (accumulator, currentValue) => accumulator + currentValue,
-    //   initialOutcome
+    //  const {sumOutcome} = outcomeList.reduce(
+    //   (accumulator, currentValue) => {
+    //     accumulator.sumOutcome += currentValue;
+    //     return accumulator;      
+    //   },{sumOutcome:0}
+       
     // );
 
     // const amounnt = sumIncome - sumOutcome;
     //    const balance: Balance = {
     //   income: sumIncome,
     //   outcome: sumOutcome,
-    //   total: sumIncome - amounnt,
+    //   total: amounnt,
     // }
 
     // return balance;
